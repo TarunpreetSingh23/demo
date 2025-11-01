@@ -23,6 +23,8 @@ const userschema=new mongoose.Schema({
              default:false
              
         },
+        resetToken: String,
+        resetTokenExpiry: Date,
         
 })
 const User=mongoose.models.User || mongoose.model

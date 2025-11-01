@@ -40,7 +40,7 @@ const authHandler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
 
   pages: {
-    signIn: "/login",
+    signIn: "/",
   },
 
   callbacks: {

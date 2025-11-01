@@ -18,22 +18,22 @@ export default function ProfilePage() {
     }
   }, [status, router]);
 
-  useEffect(() => {
-    if (session?.user?.email) {
-      fetch("/api/tasks", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: session.user.email }),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.success && Array.isArray(data.tasks)) setTasks(data.tasks);
-          else setTasks([]);
-        })
-        .catch(() => setTasks([]))
-        .finally(() => setLoadingTasks(false));
-    }
-  }, [session]);
+  // useEffect(() => {
+  //   if (session?.user?.email) {
+  //     fetch("/api/tasks", {
+  //       method: "POST",
+  //       headers: { "Content-Type": "application/json" },
+  //       body: JSON.stringify({ email: session.user.email }),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         if (data.success && Array.isArray(data.tasks)) setTasks(data.tasks);
+  //         else setTasks([]);
+  //       })
+  //       .catch(() => setTasks([]))
+  //       .finally(() => setLoadingTasks(false));
+  //   }
+  // }, [session]);
 
   const handleCancel = async (orderId) => {
     const task = tasks.find((t) => t.order_id === orderId);

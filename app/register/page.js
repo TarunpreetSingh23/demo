@@ -70,6 +70,9 @@ export default function AuthPage() {
     setEmail("");
     setPassword("");
   };
+  const handleforgot=()=>{
+    router.push("/forgot-password")
+  }
 
   const navigateAfterAuth = () => router.back();
 
@@ -118,6 +121,28 @@ export default function AuthPage() {
   return (
     <main className="min-h-screen bg-gray-900 flex items-center justify-center py-12 px-4 relative overflow-hidden">
       {/* Background orbs */}
+      {/* Divider */}
+<div className="flex items-center my-4">
+  <div className="flex-grow border-t border-gray-400"></div>
+  <span className="px-3 text-gray-400 text-sm">or</span>
+  <div className="flex-grow border-t border-gray-400"></div>
+</div>
+
+{/* Google Sign-In Button */}
+<motion.button
+  type="button"
+  onClick={() => signIn("google")}
+  whileTap={{ scale: 0.98 }}
+  className="flex items-center justify-center gap-3 w-full py-3 rounded-xl border border-gray-300 bg-white text-gray-700 font-semibold shadow-md hover:bg-gray-100 transition duration-200"
+>
+  <img
+    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+    alt="Google Logo"
+    className="w-5 h-5"
+  />
+  Continue with Google
+</motion.button>
+
       <div className="absolute top-0 left-0 w-80 h-80 bg-[#5d7afc]/20 rounded-full blur-3xl animate-pulse"></div>
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#002366]/20 rounded-full blur-3xl animate-pulse-slow"></div>
 
@@ -195,8 +220,11 @@ export default function AuthPage() {
 
                   <InputField label="Email Address" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required icon={Mail} placeholder="name@example.com" />
                   <InputField label="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required icon={Lock} placeholder="••••••••" />
+ <motion.button  onClick={()=>{router.push("/forgot-password")}} whileTap={{ scale: 0.98 }}>
+                    <p className="text-sm text-right text-[#5d7afc] hover:text-[#002366] cursor-pointer transition">Forgot Password?</p>
 
-                  <p className="text-sm text-right text-[#5d7afc] hover:text-[#002366] cursor-pointer transition">Forgot Password?</p>
+                  </motion.button>
+                  {/* <p className="text-sm text-right text-[#5d7afc] hover:text-[#002366] cursor-pointer transition">Forgot Password?</p> */}
 
                   {error && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 rounded-xl bg-red-100 text-red-700 text-sm font-medium">{error}</motion.div>}
                   {success && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="p-3 rounded-xl bg-green-100 text-green-700 text-sm font-medium">{success}</motion.div>}

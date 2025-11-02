@@ -18,7 +18,7 @@ export default function ResetPasswordPage() {
     });
     const data = await res.json();
     setMessage(data.message);
-    if (res.ok) setTimeout(() => router.push("/login"), 1500);
+    if (res.ok) setTimeout(() => router.push("/register"), 1500);
   };
 
   return (
